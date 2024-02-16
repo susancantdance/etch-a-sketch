@@ -7,9 +7,10 @@ btn.addEventListener('click',() => {
     let number = prompt('Enter a number between 1 and 100 to great an N x N grid');
     let regex = /^[0-9]/;
     while (!regex.test(number) && number !== '' && number !==null){
-        alert('That\'s not a number. Try again.');
-        number = prompt('Number this time, please');
+        alert('No. Try again.');
+        number = prompt('Number between 1 and 100 this time, please');
     }
+    if(number > 100) alert('Ugh. I said between 1 and 100');
     removeCurrentGrid();
     createGrid(Number(number));
 });
