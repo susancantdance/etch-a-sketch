@@ -1,12 +1,19 @@
 body {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    background-color: pink;
+   
   
 }
 
+button {
+    margin: 25px;
+}
+
 .container {
-    border-style: solid;
-    border-color: black;
+
     width: 1000px;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;

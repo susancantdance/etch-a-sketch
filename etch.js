@@ -1,12 +1,40 @@
 
-const container = document.querySelector('.container');
+createGrid(16);
 
-for(let i=0; i<(16**2); i++){
-    const newDiv = document.createElement('div');
-    newDiv.setAttribute('style', 'display: flex; border-style: solid; border-width: 1px; border-color: blue; width: 60px; height: 60px; padding: 0px; margin: 0px;');
- 
- 
-    //newDiv.textContent = 'hi';
-    container.appendChild(newDiv);
+const btn = document.querySelector('button');
 
+btn.addEventListener('click',() => {
+    let number = prompt('Enter a number between 1 and 100 to great an N x N grid');
+    let regex = /^[0-9]/;
+    while (!regex.test(number) && number !== '' && number !==null){
+        alert('That\'s not a number. Try again.');
+        number = prompt('Number this time, please');
+    }
+    removeCurrentGrid();
+    createGrid(Number(number));
+});
+
+function removeCurrentGrid(){
+    const divList = document.querySelectorAll('.square');
+    divList.forEach((item) => item.remove());
 }
+
+function createGrid(num){
+    console.log(`${num} is ${typeof num}`);
+    const container = document.querySelector('.container');
+
+    for(let i=0; i<num**2; i++){
+        const newDiv = document.createElement('div');
+        newDiv.classList.add('square');
+        let dimensions = 1000/num;
+        newDiv.setAttribute('style', 
+            `background-color: white; 
+            width: ${dimensions}px; 
+            height: ${dimensions}px; 
+            padding: 0px; 
+            margin: 0px;`);
+        newDiv.addEventListener('mouseover', () => { newDiv.style.backgroundColor = 'black';});
+        container.appendChild(newDiv);
+    }
+}
+
